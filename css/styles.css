@@ -1,0 +1,126 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: rgba(200, 200, 200, 1);
+    background-image: url("../assets/311239.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: unlock;
+}
+
+p {
+    margin: 8px 0;
+}
+
+.container {
+    border-radius: 5px;
+    margin: auto;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+
+.chunk {
+    width: 325px;
+    margin: auto 10px;
+}
+
+.chunk-wide {
+    width: 60%;
+    margin: auto 10px;
+}
+
+.piece {
+    background-color: rgba(125, 125, 125, 0.8);
+    padding: 5px;
+    margin: 10px 0;
+    border: 1px solid black;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+label {
+    float: left;
+    width: 165px;
+    line-height: 22px;
+}
+
+select {
+    float: right;
+    width: 120px;
+    height: 22px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+input {
+    float: right;
+    width: 114px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    height: 75px;
+    font-family: unlock;
+    font-size: 24px;
+    border-radius: 5px;
+}
+
+h1,
+h2 {
+    text-align: center;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    color: rgba(216, 162, 14, 1);
+    margin: 0 0 20px 0;
+}
+
+h1 {
+    font-size: 42px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+header h2 {
+    margin: 0;
+}
+
+.blueIt {
+    display: inline;
+    color: rgba(20, 16, 221, 1);
+}
+
+#totals {
+    visibility: hidden;
+}
+
+#mhDpsO,
+#ohDpsO,
+#ttlDpsO {
+    font-weight: 600;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        display: block;
+        justify-content: center;
+    }
+    .chunk {
+        margin: auto;
+    }
+    .chunk-wide {
+        width: 100%;
+    }
+    #totals {
+        visibility: visible;
+    }
+}

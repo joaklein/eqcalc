@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="DPS Calculator for the Project 1999 Blue Server.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Unlock" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Project 1999 DPS Calculator</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="chunk-wide">
+                <div class="piece">
+                    <h1> Project 1999
+                        <div class="blueIt">Blue</div>
+                    </h1>
+                    <h2>DPS Estimator</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+
+    </nav>
+
+    <section>
+        <div class="container">
+            <div class="chunk">
+                <div class="piece">
+                    <form>
+                        <label for="charClass">Class:</label>
+                        <select name="charClass" id="charClass">
+                            <option value="Bard">Bard</option>
+                            <option value="Cleric">Cleric</option>
+                            <option value="Druid">Druid</option>
+                            <option value="Enchanter">Enchanter</option>
+                            <option value="Magician">Magician</option>
+                            <option value="Monk">Monk</option>
+                            <option value="Necromancer">Necromancer</option>
+                            <option value="Paladin">Paladin</option>
+                            <option value="Ranger">Ranger</option>
+                            <option value="Rogue">Rogue</option>
+                            <option value="Shadow Knight">Shadow Knight</option>
+                            <option value="Shaman">Shaman</option>
+                            <option value="Warrior">Warrior</option>
+                            <option value="Wizard">Wizard</option>
+                        </select>
+                        <label for="charLevel">Level:</label>
+                        <input type="number" name="charLevel" id="charLevel" min="1" max="60">
+                        <label for="charStr">Strength:</label>
+                        <input type="number" name="charStr" id="charStr" max="255">
+                        <label for="charHaste">Haste:</label>
+                        <input type="number" name="charHaste" id="charHaste" placeholder="whole number" max="100">
+                    </form>
+                </div>
+                <div class="piece">
+
+                    <form>
+                        <label for="skillDW">Dual Wield Skill:</label>
+                        <input type="number" name="skillDW" id="skillDW" max="252">
+                        <label for="skillDA">Double Attack Skill:</label>
+                        <input type="number" name="skillDA" id="skillDA" max="252">
+                        <label for="skillOff">Offense Skill:</label>
+                        <input type="number" name="skillOff" id="skillOff" max="252">
+                        <label for="skillBS">Backstab Skill:</label>
+                        <input type="number" name="skillBS" id="skillBS" placeholder="0">
+                    </form>
+                </div>
+
+                <div class="piece">
+                    <form>
+                        <label for="mhDmg">Main Hand Damage:</label>
+                        <input type="number" name="mhDmg" id="mhDmg" max="100">
+                        <label for="mhDelay">Main Hand Delay:</label>
+                        <input type="number" name="mhDelay" id="mhDelay" max="200">
+                        <label for="ohDmg">Off Hand Damage:</label>
+                        <input type="number" name="ohDmg" id="ohDmg" max="100">
+                        <label for="ohDelay">Off Hand Delay:</label>
+                        <input type="number" name="ohDelay" id="ohDelay" max="200">
+                        <label for="thBonus">2H Dmg Bonus:</label>
+                        <input type="number" name="thBonus" id="thBonus" placeholder="0">
+                    </form>
+                </div>
+            </div>
+
+            <div class="chunk">
+                <h2 id="totals">Totals</h2>
+                <div class="piece">
+                    <form>
+                        <label for="mhDmgCapO">Main Hand Cap Chk:</label>
+                        <input type="text" name="mhDmgCapO" id="mhDmgCapO" readonly>
+                        <label for="mhMinO">Main Hand Min:</label>
+                        <input type="text" name="mhMinO" id="mhMinO" readonly>
+                        <label for="mhMaxO">Main Hand Max:</label>
+                        <input type="text" name="mhMaxO" id="mhMaxO" readonly>
+                        <label for="mhDelayO">Main Hand Delay:</label>
+                        <input type="text" name="mhDelayO" id="mhDelayO" readonly>
+                        <label for="mhDpsO">Main Hand DPS:</label>
+                        <input type="text" name="mhDpsO" id="mhDpsO" readonly>
+                    </form>
+                </div>
+
+                <div class="piece">
+                    <form>
+                        <label for="ohDmgCapO">Off Hand Cap Chk:</label>
+                        <input type="text" name="ohDmgCapO" id="ohDmgCapO" readonly>
+                        <label for="ohMinO">Off Hand Min:</label>
+                        <input type="text" name="ohMinO" id="ohMinO" readonly>
+                        <label for="ohMaxO">Off Hand Max:</label>
+                        <input type="text" name="ohMaxO" id="ohMaxO" readonly>
+                        <label for="ohDelayO">Off Hand Delay:</label>
+                        <input type="text" name="ohDelayO" id="ohDelayO" readonly>
+                        <label for="ohDpsO">Off Hand DPS:</label>
+                        <input type="text" name="ohDpsO" id="ohDpsO" readonly>
+                    </form>
+                </div>
+
+                <div class="piece">
+
+                    <form>
+                        <label for="ttlDpsO">Total DPS:</label>
+                        <input type="text" name="ttlDpsO" id="ttlDpsO" readonly>
+                    </form>
+                </div>
+
+                <div class="piece">
+
+                    <form>
+                        <label for="dmgBonus">Damage Bonus:</label>
+                        <input type="text" name="dmgBonus" id="dmgBonus" readonly>
+                        <label for="dmgMod">Damage Mod:</label>
+                        <input type="text" name="dmgMod" id="dmgMod" readonly>
+                        <label for="dwChance">Dual Wield Chance:</label>
+                        <input type="text" name="dwChance" id="dwChance" readonly>
+                        <label for="daChance">Dbl Attack Chance:</label>
+                        <input type="text" name="daChance" id="daChance" readonly>
+                        <label for="taChance">Tpl Attack Chance:</label>
+                        <input type="text" name="taChance" id="taChance" readonly>
+                        <label for="maxBS">Max Backstab:</label>
+                        <input type="text" name="maxBS" id="maxBS" readonly>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="chunk">
+                <button id="calc">Calculate</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="chunk-wide">
+                <div class="piece">
+                    <h2>NOTES</h2>
+                    <p>Please enter 2 Hander Damage Bonus manually above for now. See <a href="https://lucy.allakhazam.com/dmgbonus.html" target="_blank">this table</a>.
+                    </p>
+                    <p>The calculator assumes you land every swing, so your in-game parses will vary in comparison.</p>
+                    <p>Procs are not included in DPS.</p>
+                    <p>Backstabs are not included in DPS.</p>
+                    <p>Off Hand DPS accounts for Dual Wield Chance.</p>
+                    <p>Total DPS accounts for Dual Wield, Double Attack and Triple attack respectively (beta).</p>
+                    <p>All level-based haste caps are in place, as well as class-based damage caps.</p>
+                    <p>Skills are not tied to level caps so you have more freedom to play with odd skill levels.</p>
+                    <p>Source: <a href="http://wiki.project1999.com/Game_Mechanics#Melee_Combat_and_Damage" target="_blank">Project 1999
+                            Wiki Game Mechanics</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <script type="text/javascript" src="js/scripts.js"></script>
+</body>
+
+</html>
