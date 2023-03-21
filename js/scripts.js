@@ -194,6 +194,11 @@ function doCalc() {
 
     function getDaChance() {
         let daChance = skillDA / (400 * 1.05)
+
+        if (charClass == 'Bard') {
+            daChance = 0
+        }
+        
         return daChance
     }
 
