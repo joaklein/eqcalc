@@ -2,41 +2,41 @@ document.querySelector("#calc").onclick = doCalc
 
 function doCalc() {
     let charClass = document.querySelector("#charClass").value
-    let charLevel = document.querySelector("#charLevel").value
-    let charStr = document.querySelector("#charStr").value
-    let charHaste = document.querySelector("#charHaste").value
-    let skillDW = document.querySelector("#skillDW").value
-    let skillDA = document.querySelector("#skillDA").value
-    let skillOff = document.querySelector("#skillOff").value
-    let skillBS = document.querySelector("#skillBS").value
-    let mhDmg = document.querySelector("#mhDmg").value
-    let mhDelay = document.querySelector("#mhDelay").value
-    let ohDmg = document.querySelector("#ohDmg").value
-    let ohDelay = document.querySelector("#ohDelay").value
-    let thBonus = document.querySelector("#thBonus").value
+    let charLevel = parseFloat(document.querySelector("#charLevel").value)
+    let charStr = parseFloat(document.querySelector("#charStr").value)
+    let charHaste = parseFloat(document.querySelector("#charHaste").value)
+    let skillDW = parseFloat(document.querySelector("#skillDW").value)
+    let skillDA = parseFloat(document.querySelector("#skillDA").value)
+    let skillOff = parseFloat(document.querySelector("#skillOff").value)
+    let skillBS = parseFloat(document.querySelector("#skillBS").value)
+    let mhDmg = parseFloat(document.querySelector("#mhDmg").value)
+    let mhDelay = parseFloat(document.querySelector("#mhDelay").value)
+    let ohDmg = parseFloat(document.querySelector("#ohDmg").value)
+    let ohDelay = parseFloat(document.querySelector("#ohDelay").value)
+    let thBonus = parseFloat(document.querySelector("#thBonus").value)
 
-    let dmgMod = getDmgMod()
-    let dmgBonus = getDmgBonus()
-    let hasteCap = getHasteCap()
-    let dwChance = getDwChance()
-    let daChance = getDaChance()
-    let taChance = getTaChance()
+    let dmgMod = parseFloat(getDmgMod())
+    let dmgBonus = parseFloat(getDmgBonus())
+    let hasteCap = parseFloat(getHasteCap())
+    let dwChance = parseFloat(getDwChance())
+    let daChance = parseFloat(getDaChance())
+    let taChance = parseFloat(getTaChance())
 
-    let mhDmgCapO = getDmgCap(mhDmg)
-    let mhMinO = getMainMin()
-    let mhMaxO = getMainMax()
-    let mhDelayO = getWepDelay(mhDmg, mhDelay)
-    let mhDpsO = getMainDPS()
+    let mhDmgCapO = parseFloat(getDmgCap(mhDmg))
+    let mhMinO = parseFloat(getMainMin())
+    let mhMaxO = parseFloat(getMainMax())
+    let mhDelayO = parseFloat(getWepDelay(mhDmg, mhDelay))
+    let mhDpsO = parseFloat(getMainDPS())
 
-    let ohDmgCapO = getDmgCap(ohDmg)
-    let ohMinO = getOffMin()
-    let ohMaxO = getOffMax()
-    let ohDelayO = getWepDelay(ohDmg, ohDelay)
-    let ohDpsO = getOffDPS()
+    let ohDmgCapO = parseFloat(getDmgCap(ohDmg))
+    let ohMinO = parseFloat(getOffMin())
+    let ohMaxO = parseFloat(getOffMax())
+    let ohDelayO = parseFloat(getWepDelay(ohDmg, ohDelay))
+    let ohDpsO = parseFloat(getOffDPS())
 
-    let ttlDpsO = getTtlDPS()
+    let ttlDpsO = parseFloat(getTtlDPS())
 
-    let maxBS = getMaxBS()
+    let maxBS = parseFloat(getMaxBS())
 
     document.querySelector("#dmgMod").value = dmgMod
     document.querySelector("#dmgBonus").value = dmgBonus
@@ -79,7 +79,7 @@ function doCalc() {
     }
 
     function getDmgMod() {
-        let dmgMod = (parseFloat(skillOff) + parseFloat(charStr)) / 100
+        let dmgMod = (skillOff + charStr) / 100
         return dmgMod
     }
 
@@ -128,9 +128,9 @@ function doCalc() {
         let dwChance
 
         if (charClass == "Monk") {
-            dwChance = (parseFloat(charLevel) + parseFloat(skillDW)) / 400
+            dwChance = (charLevel + skillDW) / 400
         } else {
-            dwChance = (parseFloat(charLevel) + parseFloat(skillDW)) / 500
+            dwChance = (charLevel + skillDW) / 500
         }
 
         return dwChance
@@ -178,14 +178,14 @@ function doCalc() {
         let totalDPS
 
         if (skillDW < 150) {
-            totalDPS = parseFloat(mhDpsO) + (parseFloat(mhDpsO) * parseFloat(daChance)) + parseFloat(ohDpsO)
+            totalDPS = mhDpsO + (mhDpsO * daChance) + ohDpsO
         } else {
-            totalDPS = parseFloat(mhDpsO) + (parseFloat(mhDpsO) * parseFloat(daChance)) + parseFloat(ohDpsO) + (parseFloat(ohDpsO) * parseFloat(daChance))
+            totalDPS = mhDpsO + (mhDpsO * daChance) + ohDpsO + (ohDpsO * daChance)
         }
 
         if (charClass == "Warrior" || charClass == "Monk") {
             if (charLevel >= 60) {
-                totalDPS += parseFloat(mhDpsO) * parseFloat(taChance)
+                totalDPS += mhDpsO * taChance
             }
         }
 
@@ -203,7 +203,7 @@ function doCalc() {
             dmgBonus = thBonus
         }
 
-        mainMax = (mhDmg * dmgMod) + parseFloat(dmgBonus)
+        mainMax = (mhDmg * dmgMod) + dmgBonus
         mainMax = Math.floor(mainMax)
         return mainMax
     }
@@ -242,7 +242,7 @@ function doCalc() {
             strUnder = charStr
         }
 
-        maxBS = ((parseFloat(skillOff) + parseFloat(strUnder)) + (parseFloat(strOver) / 5)) * parseFloat(mhDmg) * (2 + (parseFloat(skillBS) * .02)) / 100
+        maxBS = ((skillOff + strUnder) + (strOver / 5)) * mhDmg * (2 + (skillBS * .02)) / 100
         maxBS = Math.round(maxBS)
 
         if (charClass !== "Rogue") {
