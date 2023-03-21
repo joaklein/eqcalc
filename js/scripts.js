@@ -46,7 +46,6 @@ function doCalc() {
     let mhDelay = Number(document.querySelector("#mhDelay").value)
     let ohDmg = Number(document.querySelector("#ohDmg").value)
     let ohDelay = Number(document.querySelector("#ohDelay").value)
-    let thBonus = Number(document.querySelector("#thBonus").value)
 
     let dmgMod = Number(getDmgMod())
     let dmgBonus = Number(getDmgBonus())
@@ -99,8 +98,6 @@ function doCalc() {
 
         if (charLevel < 28) {
             bonus = 0
-        // } else if (thBonus > 0) {
-        //     bonus = thBonus
         } else if (charClass == "Bard" || charClass == "Monk" || charClass == "Paladin" || charClass == "Ranger" ||
             charClass == "Rogue" || charClass == "Shadow Knight" || charClass == "Warrior") {
             bonus = (charLevel - 25) / 3
