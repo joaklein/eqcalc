@@ -103,27 +103,29 @@ function doCalc() {
     function getDmgBonus() {
         let bonus
 
-        if (charLevel < 28) {
-            bonus = 0
-        } else if (charClass == "Bard" || charClass == "Monk" || charClass == "Paladin" || charClass == "Ranger" ||
-            charClass == "Rogue" || charClass == "Shadow Knight" || charClass == "Warrior") {
-            if (ohDmg == 0 || ohDmg == '') {
-                if (mhDelay > 28 && mhDelay <= 60) {
-                    bonus = twoHanderBonus[mhDelay - 28][charLevel - 28]
-                } else if (mhDelay == 70) {
-                    bonus = twoHanderBonus[mhDelay - 37][charLevel - 28]
-                } else if (mhDelay == 85) {
-                    bonus = twoHanderBonus[mhDelay - 51][charLevel - 28]
-                } else if (mhDelay == 95) {
-                    bonus = twoHanderBonus[mhDelay - 60][charLevel - 28]
-                } else if (mhDelay == 150) {
-                    bonus = twoHanderBonus[mhDelay - 114][charLevel - 28]
+        if (charLevel >= 28) {
+            if (charClass == "Bard" || charClass == "Monk" || charClass == "Paladin" || charClass == "Ranger" ||
+                charClass == "Rogue" || charClass == "Shadow Knight" || charClass == "Warrior") {
+                if (ohDmg == 0 || ohDmg == '') {
+                    if (mhDelay < 28) {
+                        bonus = (charLevel - 25) / 3
+                    } else if (mhDelay >= 28 && mhDelay <= 60) {
+                        bonus = twoHanderBonus[mhDelay - 28][charLevel - 28]
+                    } else if (mhDelay == 70) {
+                        bonus = twoHanderBonus[mhDelay - 37][charLevel - 28]
+                    } else if (mhDelay == 85) {
+                        bonus = twoHanderBonus[mhDelay - 51][charLevel - 28]
+                    } else if (mhDelay == 95) {
+                        bonus = twoHanderBonus[mhDelay - 60][charLevel - 28]
+                    } else if (mhDelay == 150) {
+                        bonus = twoHanderBonus[mhDelay - 114][charLevel - 28]
+                    } else {
+                        alert('If delay is over 60, please use 70, 85, 95, or 150. There is no item with any other delay!')
+                        bonus = 0
+                    }
                 } else {
-                    alert('If delay is over 60, please use 70, 85, 95, or 150. There is no item with any other delay!')
-                    bonus = 0
+                    bonus = (charLevel - 25) / 3
                 }
-            } else {
-                bonus = (charLevel - 25) / 3
             }
         } else {
             bonus = 0
@@ -212,14 +214,14 @@ function doCalc() {
     function getMainDPS() {
         let dps
 
-        dps = ((mhMinO + mhMaxO) / 2) * (mhDelayO * .1)
+        dps = ((mhMinO + mhMaxO) / 2) / (mhDelayO * .1)
         return dps.toFixed(2)
     }
 
     function getOffDPS() {
         let dps
 
-        dps = (((ohMinO + ohMaxO) / 2) * (ohDelayO * .1)) * dwChance
+        dps = (((ohMinO + ohMaxO) / 2) / (ohDelayO * .1)) * dwChance
 
         if (ohMinO == 0) {
             dps = 0
