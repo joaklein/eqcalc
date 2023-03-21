@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html {
     height: 100%;
 }
@@ -12,74 +18,11 @@ body {
     font-family: unlock;
 }
 
-p {
-    margin: 8px 0;
-}
-
-.container {
-    border-radius: 5px;
-    margin: auto;
-    width: 90%;
-    display: flex;
-    justify-content: center;
-}
-
-.chunk {
-    width: 325px;
-    margin: auto 10px;
-}
-
-.chunk-wide {
-    width: 60%;
-    margin: auto 10px;
-}
-
-.piece {
-    background-color: rgba(125, 125, 125, 0.8);
-    padding: 5px;
-    margin: 10px 0;
-    border: 1px solid black;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-label {
-    float: left;
-    width: 165px;
-    line-height: 22px;
-}
-
-select {
-    float: right;
-    width: 120px;
-    height: 22px;
-    text-align: center;
-    border-radius: 5px;
-}
-
-input {
-    float: right;
-    width: 114px;
-    text-align: center;
-    border-radius: 5px;
-}
-
-button {
-    display: block;
-    margin: 0 auto;
-    width: 200px;
-    height: 75px;
-    font-family: unlock;
-    font-size: 24px;
-    border-radius: 5px;
-}
-
 h1,
 h2 {
-    text-align: center;
     text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
     color: rgba(216, 162, 14, 1);
-    margin: 0 0 20px 0;
+    text-align: center;
 }
 
 h1 {
@@ -90,17 +33,89 @@ h2 {
     font-size: 30px;
 }
 
-header h2 {
-    margin: 0;
-}
-
-.blueIt {
-    display: inline;
-    color: rgba(20, 16, 221, 1);
+header {
+    margin: 1rem 0;
 }
 
 #totals {
-    visibility: hidden;
+    display: none;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 900px;
+    gap: 1rem;
+    margin: 0 auto;
+}
+
+.chunk {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.chunk-wide {
+    width: 100%;
+}
+
+.piece {
+    background-color: rgba(125, 125, 125, 0.8);
+    padding: .5rem;
+    border: 1px solid black;
+    border-radius: .5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /*! align-items: center; */
+    gap: .5rem;
+    backdrop-filter: blur(3px);
+}
+
+form {
+    display: grid;
+    grid-template-columns: auto 110px;
+    gap: .25rem;
+}
+
+label {
+    align-self: center;
+}
+
+select {
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #000;
+    height: 1.5rem;
+}
+
+input {
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #000;
+    line-height: 1.4rem;
+    appearance: textfield;
+}
+
+button {
+    padding: .75rem 1rem;
+    font-family: unlock;
+    font-size: 24px;
+    border-radius: 5px;
+    border: 1px solid #000;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+li {
+    list-style: disc;
+    margin-left: 1rem;
 }
 
 #mhDpsO,
@@ -109,18 +124,29 @@ header h2 {
     font-weight: 600;
 }
 
+footer {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 @media only screen and (max-width: 768px) {
+
+    body {
+        padding: .5rem;
+    }
+
     .container {
-        display: block;
-        justify-content: center;
+        width: 100%;
+        flex-direction: column;
     }
+
     .chunk {
-        margin: auto;
-    }
-    .chunk-wide {
         width: 100%;
     }
+
     #totals {
-        visibility: visible;
+        display: block;
     }
 }
