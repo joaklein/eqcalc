@@ -232,10 +232,6 @@ function doCalc() {
             dmgMod = 2
         }
 
-        if (thBonus > 0) {
-            dmgBonus = thBonus
-        }
-
         mainMax = (mhDmg * dmgMod) + dmgBonus
         mainMax = Math.floor(mainMax)
         return mainMax
