@@ -2,41 +2,41 @@ document.querySelector("#calc").onclick = doCalc
 
 function doCalc() {
     let charClass = document.querySelector("#charClass").value
-    let charLevel = parseFloat(document.querySelector("#charLevel").value)
-    let charStr = parseFloat(document.querySelector("#charStr").value)
-    let charHaste = parseFloat(document.querySelector("#charHaste").value)
-    let skillDW = parseFloat(document.querySelector("#skillDW").value)
-    let skillDA = parseFloat(document.querySelector("#skillDA").value)
-    let skillOff = parseFloat(document.querySelector("#skillOff").value)
-    let skillBS = parseFloat(document.querySelector("#skillBS").value)
-    let mhDmg = parseFloat(document.querySelector("#mhDmg").value)
-    let mhDelay = parseFloat(document.querySelector("#mhDelay").value)
-    let ohDmg = parseFloat(document.querySelector("#ohDmg").value)
-    let ohDelay = parseFloat(document.querySelector("#ohDelay").value)
-    let thBonus = parseFloat(document.querySelector("#thBonus").value)
+    let charLevel = Number(document.querySelector("#charLevel").value)
+    let charStr = Number(document.querySelector("#charStr").value)
+    let charHaste = Number(document.querySelector("#charHaste").value)
+    let skillDW = Number(document.querySelector("#skillDW").value)
+    let skillDA = Number(document.querySelector("#skillDA").value)
+    let skillOff = Number(document.querySelector("#skillOff").value)
+    let skillBS = Number(document.querySelector("#skillBS").value)
+    let mhDmg = Number(document.querySelector("#mhDmg").value)
+    let mhDelay = Number(document.querySelector("#mhDelay").value)
+    let ohDmg = Number(document.querySelector("#ohDmg").value)
+    let ohDelay = Number(document.querySelector("#ohDelay").value)
+    let thBonus = Number(document.querySelector("#thBonus").value)
 
-    let dmgMod = parseFloat(getDmgMod())
-    let dmgBonus = parseFloat(getDmgBonus())
-    let hasteCap = parseFloat(getHasteCap())
-    let dwChance = parseFloat(getDwChance())
-    let daChance = parseFloat(getDaChance())
-    let taChance = parseFloat(getTaChance())
+    let dmgMod = Number(getDmgMod())
+    let dmgBonus = Number(getDmgBonus())
+    let hasteCap = Number(getHasteCap())
+    let dwChance = Number(getDwChance())
+    let daChance = Number(getDaChance())
+    let taChance = Number(getTaChance())
 
-    let mhDmgCapO = parseFloat(getDmgCap(mhDmg))
-    let mhMinO = parseFloat(getMainMin())
-    let mhMaxO = parseFloat(getMainMax())
-    let mhDelayO = parseFloat(getWepDelay(mhDmg, mhDelay))
-    let mhDpsO = parseFloat(getMainDPS())
+    let mhDmgCapO = Number(getDmgCap(mhDmg))
+    let mhMinO = Number(getMainMin())
+    let mhMaxO = Number(getMainMax())
+    let mhDelayO = Number(getWepDelay(mhDmg, mhDelay))
+    let mhDpsO = Number(getMainDPS())
 
-    let ohDmgCapO = parseFloat(getDmgCap(ohDmg))
-    let ohMinO = parseFloat(getOffMin())
-    let ohMaxO = parseFloat(getOffMax())
-    let ohDelayO = parseFloat(getWepDelay(ohDmg, ohDelay))
-    let ohDpsO = parseFloat(getOffDPS())
+    let ohDmgCapO = Number(getDmgCap(ohDmg))
+    let ohMinO = Number(getOffMin())
+    let ohMaxO = Number(getOffMax())
+    let ohDelayO = Number(getWepDelay(ohDmg, ohDelay))
+    let ohDpsO = Number(getOffDPS())
 
-    let ttlDpsO = parseFloat(getTtlDPS())
+    let ttlDpsO = Number(getTtlDPS())
 
-    let maxBS = parseFloat(getMaxBS())
+    let maxBS = Number(getMaxBS())
 
     document.querySelector("#dmgMod").value = dmgMod
     document.querySelector("#dmgBonus").value = dmgBonus
@@ -216,7 +216,7 @@ function doCalc() {
     function getOffMin() {
         let offMin
 
-        if (ohDmg == 0) {
+        if (ohDmg == 0 || ohDmg == '') {
             offMin = 0
         } else {
             offMin = 1
@@ -226,7 +226,14 @@ function doCalc() {
     }
 
     function getOffMax() {
-        let offMax = Math.floor(ohDmg * dmgMod)
+        let offMax
+        
+        if (ohDmg == 0 || ohDmg == '') {
+            offMax = 0
+        } else {
+            offMax = Math.floor(ohDmg * dmgMod)
+        }
+
         return offMax
     }
 
