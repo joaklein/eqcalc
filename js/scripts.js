@@ -212,14 +212,14 @@ function doCalc() {
     function getMainDPS() {
         let dps
 
-        dps = ((mhMinO + mhMaxO) / 2) / (mhDelayO * .1)
+        dps = ((mhMinO + mhMaxO) / 2) * (mhDelayO * .1)
         return dps.toFixed(2)
     }
 
     function getOffDPS() {
         let dps
 
-        dps = (((ohMinO + ohMaxO) / 2) / (ohDelayO * .1)) * dwChance
+        dps = (((ohMinO + ohMaxO) / 2) * (ohDelayO * .1)) * dwChance
 
         if (ohMinO == 0) {
             dps = 0
@@ -254,8 +254,7 @@ function doCalc() {
         }
 
         mainMax = (mhDmg * dmgMod) + dmgBonus
-        mainMax = Math.floor(mainMax)
-        return mainMax
+        return Math.floor(mainMax)
     }
 
     function getMainMin() {
