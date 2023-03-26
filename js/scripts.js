@@ -185,8 +185,10 @@ function doCalc() {
 
         if (charClass == "Monk") {
             dwChance = (charLevel + skillDW) / 400
-        } else {
+        } else if (charClass == 'Warrior' || charClass == 'Rogue' || charClass == 'Ranger' || charClass == 'Bard') {
             dwChance = (charLevel + skillDW) / 500
+        } else {
+            dwChance = 0
         }
 
         return dwChance
